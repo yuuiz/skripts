@@ -1,0 +1,27 @@
+command /enablelifesteal:
+    permission: op
+    trigger:
+        if {lifesteal} is set:
+            send title "&aLifesteal is disabled!" to all players
+            delete {lifesteal}
+        else:
+            send title "&cLifesteal is enabled." to all players
+            set {lifesteal} to true
+command /redeem:
+    permission: op
+    trigger:
+        if player's max health > 1:
+            remove 1 from player's max health
+            give player 1 red dye named "&c&lHeart" with lore "&ba heart real"
+on right click:
+    if player's held item's name is "&c&lHeart":
+        remove 1 of player's held item from player's inventory
+        add 1 to player's max health
+on death:
+    attacker is a player
+    victim is a player
+    victim is not attacker
+    if attacker's max health < 20:
+        victim's max health > 1
+        add 1 to attacker's max health
+        remove 1 from victim's max health
