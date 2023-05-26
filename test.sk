@@ -1,0 +1,8 @@
+command /r [<text>]:
+    trigger:
+        if arg is set:
+            reload script arg
+            send "&breloaded %arg%"
+        else:
+            loop all scripts:
+                reload script loop-value
